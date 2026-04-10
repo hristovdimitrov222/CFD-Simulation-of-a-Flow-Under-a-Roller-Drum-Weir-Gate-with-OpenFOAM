@@ -1,0 +1,12 @@
+#!/bin/bash
+
+find . -name "*Zone.Identifier" -type f -delete
+
+setFields
+
+decomposePar
+
+mpirun -np 5 interFoam -parallel
+reconstructPar
+
+rm -r processor*
