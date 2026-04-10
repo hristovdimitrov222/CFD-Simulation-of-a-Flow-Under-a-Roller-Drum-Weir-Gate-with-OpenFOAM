@@ -1,0 +1,106 @@
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    object      alpha.water;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 0 0 0 0 0 0];
+
+internalField   uniform 1.;
+
+
+boundaryField
+{
+    atmosphereH
+    {
+        type            waterLevel_alpha_prgh;  // Behaves like zeroGradient at an outlet and like a Dirichlet-BC at an inlet.
+        mode            singleValue;            // singleValue, ratingCurveTable, ratingCurveFunction or timeSeries  
+        data            0.408;                   // water level [m]. Alternative: Supply a table for functions
+
+        // data     table  (
+        //                (0   2.41)
+        //                (100 2.41)
+        //          );                          // table for dependency between Q and h  or between t and h   
+        
+        // OPTIONAL ENTRIES:
+        // flowRateMultiplier    1.0;           // For "slice" models: Multiply Q with flowRateMultiplier before evaluating h 
+        
+        value uniform   1.;                     // Initial value for alpha
+    }
+	
+    atmosphereL
+    {
+        type            waterLevel_alpha_prgh;  // Behaves like zeroGradient at an outlet and like a Dirichlet-BC at an inlet.
+        mode            singleValue;            // singleValue, ratingCurveTable, ratingCurveFunction or timeSeries  
+        data            0.058;                   // water level [m]. Alternative: Supply a table for functions
+
+        // data     table  (
+        //                (0   2.41)
+        //                (100 2.41)
+        //          );                          // table for dependency between Q and h  or between t and h   
+        
+        // OPTIONAL ENTRIES:
+        // flowRateMultiplier    1.0;           // For "slice" models: Multiply Q with flowRateMultiplier before evaluating h 
+        
+        value uniform   1.;                     // Initial value for alpha
+    }
+    
+    defaultFaceL
+    {
+        type            zeroGradient;
+    }
+	
+	defaultFaceR
+    {
+        type            zeroGradient;
+    }
+    gate
+    {
+        type            zeroGradient;
+    }
+    inlet
+    {
+		type            waterLevel_alpha_prgh;  // Behaves like zeroGradient at an outlet and like a Dirichlet-BC at an inlet.
+        mode            singleValue;            // singleValue, ratingCurveTable, ratingCurveFunction or timeSeries  
+        data            0.408;                    // water level [m]. Alternative: Supply a table for functions
+
+        // data     table  (
+        //                (0   2.41)
+        //                (100 2.41)
+        //          );                          // table for dependency between Q and h  or between t and h   
+        
+        // OPTIONAL ENTRIES:
+        // flowRateMultiplier    1.0;           // For "slice" models: Multiply Q with flowRateMultiplier before evaluating h 
+        
+        value uniform   1.;                     // Initial value for alpha
+    }
+    lowerWall
+    {
+        type            zeroGradient;
+    }
+    outlet
+    {
+        type            waterLevel_alpha_prgh;  // Behaves like zeroGradient at an outlet and like a Dirichlet-BC at an inlet.
+        mode            singleValue;            // singleValue, ratingCurveTable, ratingCurveFunction or timeSeries  
+        data            0.058;                   // water level [m]. Alternative: Supply a table for functions
+
+        // data     table  (
+        //                (0   0.223) // Initial WL
+        //              (15  0.233) // The previous step needs 15 seconds to converge based on its simulation; Steps of 0.01m
+		//				(30  0.243)
+		//				(45  0.253)
+		//				(60  0.263)
+		//				(75  0.273) // Ending at the correct WL for woE
+		//				);                          // table for dependency between Q and h  or between t and h 
+        
+        // OPTIONAL ENTRIES:
+        // flowRateMultiplier    1.0;           // For "slice" models: Multiply Q with flowRateMultiplier before evaluating h 
+        
+        value uniform   1.;                     // Initial value for alpha
+    }
+    
+}
