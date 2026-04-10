@@ -1,0 +1,79 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2506                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    arch        "LSB;label=32;scalar=64";
+    class       polyBoundaryMesh;
+    location    "constant/polyMesh";
+    object      boundary;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+8
+(
+    atmosphereH
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          470;
+        startFace       333541;
+    }
+    atmosphereL
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          1112;
+        startFace       334011;
+    }
+    defaultFaceL
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          3664;
+        startFace       335123;
+    }
+    defaultFaceR
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          3664;
+        startFace       338787;
+    }
+    gate
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          6578;
+        startFace       342451;
+    }
+    inlet
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          240;
+        startFace       349029;
+    }
+    lowerWall
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          6922;
+        startFace       349269;
+    }
+    outlet
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          436;
+        startFace       356191;
+    }
+)
+
+// ************************************************************************* //
