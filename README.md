@@ -4,7 +4,18 @@ The code provided here is supplementary to the master's thesis of Dimitrov, H. (
 The code can be altered and shared freely. 
  
 # How to use
-Download the desired cases for testing from the [inter](inter) folder. Run the following commands:
+Download the desired meshes for testing from the [mesh](mesh) folder. Either observe the results directly or rerun to see all the documents from the meshing process. To rerun, run the following commands:
+
+```
+blockMesh
+surfaceFeatureExtract
+decomposePar
+mpirun -np 5 snappyHexMesh -overwrite -parallel
+reconstructParMesh -latestTime -constant
+rm -r processor*
+```
+
+Download the desired cases for testing from the case folder. Run the following commands:
 
 ```
 decomposePar
