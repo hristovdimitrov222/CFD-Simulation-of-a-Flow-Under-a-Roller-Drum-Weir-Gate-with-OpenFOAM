@@ -1,0 +1,16 @@
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       uniformDimensionedScalarField;
+    location    "constant";
+    object      hRef;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+// Code template and library provided by Thorenz, C. (2024), DOI: 10.3929/ethz-b-000675949
+
+dimensions      [0 1 0 0 0 0 0];
+value           0.42;   // Should be at the water surface of the model
+

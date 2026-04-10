@@ -1,0 +1,86 @@
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    object      alpha.water;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+// Code template and library provided by Thorenz, C. (2024), DOI: 10.3929/ethz-b-000675949
+
+dimensions      [0 0 0 0 0 0 0];
+
+internalField   uniform 1.;
+
+
+boundaryField
+{
+    atmosphere
+    {
+        type            waterLevel_alpha_prgh;  // Behaves like zeroGradient at an outlet and like a Dirichlet-BC at an inlet.
+        mode            singleValue;            // singleValue, ratingCurveTable, ratingCurveFunction or timeSeries  
+        data            0.42;                   // water level [m]. Alternative: Supply a table for functions
+
+        // data     table  (
+        //                (0   2.41)
+        //                (100 2.41)
+        //          );                          // table for dependency between Q and h  or between t and h   
+        
+        // OPTIONAL ENTRIES:
+        // flowRateMultiplier    1.0;           // For "slice" models: Multiply Q with flowRateMultiplier before evaluating h 
+        
+        value uniform   1.;                     // Initial value for alpha
+    }
+    
+    defaultFaces
+    {
+        type            zeroGradient;
+    }
+    gate
+    {
+        type            zeroGradient;
+    }
+    inlet
+    {
+		type            waterLevel_alpha_prgh;  // Behaves like zeroGradient at an outlet and like a Dirichlet-BC at an inlet.
+        mode            singleValue;            // singleValue, ratingCurveTable, ratingCurveFunction or timeSeries  
+        data            0.42;                    // water level [m]. Alternative: Supply a table for functions
+
+        // data     table  (
+        //                (0   2.41)
+        //                (100 2.41)
+        //          );                          // table for dependency between Q and h  or between t and h   
+        
+        // OPTIONAL ENTRIES:
+        // flowRateMultiplier    1.0;           // For "slice" models: Multiply Q with flowRateMultiplier before evaluating h 
+        
+        value uniform   1.;                     // Initial value for alpha
+    }
+    lowerWall
+    {
+        type            zeroGradient;
+    }
+    outlet
+    {
+        type            waterLevel_alpha_prgh;  // Behaves like zeroGradient at an outlet and like a Dirichlet-BC at an inlet.
+        mode            timeSeries;            // singleValue, ratingCurveTable, ratingCurveFunction or timeSeries  
+        // data            //0.326;                   // water level [m]. Alternative: Supply a table for functions
+
+        data     table  (
+                        (0   0.273) // Initial WL is the highest that gives good jet profile
+                        (15  0.283) // The previous step needs 15 seconds to converge based on its simulation; Steps of 0.01m
+						(30  0.293)
+						(45  0.303)
+						(60  0.313)
+						(75  0.326) // Ending at the correct WL for woE
+						);                          // table for dependency between Q and h  or between t and h   
+        
+        // OPTIONAL ENTRIES:
+        // flowRateMultiplier    1.0;           // For "slice" models: Multiply Q with flowRateMultiplier before evaluating h 
+        
+        value uniform   1.;                     // Initial value for alpha
+    }
+    
+}

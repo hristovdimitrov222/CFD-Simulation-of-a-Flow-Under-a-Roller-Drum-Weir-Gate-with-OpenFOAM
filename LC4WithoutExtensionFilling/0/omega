@@ -1,0 +1,55 @@
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    object      omega;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+// Code template and library provided by Thorenz, C. (2024), DOI: 10.3929/ethz-b-000675949
+
+dimensions      [0 0 -1 0 0 0 0];
+
+internalField   uniform 0.25;
+
+
+boundaryField
+{
+    atmosphere
+    {
+        type            inletOutlet;
+        inletValue      uniform 0.25;
+        value           uniform 0.25;
+    }
+    
+    defaultFaces
+    {
+        type            zeroGradient;
+    }
+    
+    gate
+    {
+        type            omegaWallFunction;
+        value           uniform 0.;
+    }
+    inlet
+    {
+        type            inletOutlet;
+        inletValue      uniform 0.25;
+        value           uniform 0.25;
+    }
+    lowerWall
+    {
+        type            omegaWallFunction;
+        value           uniform 0.;
+    }
+    outlet
+    {
+        type            inletOutlet;
+        inletValue      uniform 0.25;
+        value           uniform 0.25;
+    }
+    
+}
