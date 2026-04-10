@@ -1,5 +1,5 @@
 # OpenFOAM CFD simulation of flow under roller drum gate
-The code provided here is supplementary to the master's thesis of Dimitrov, H. (2026). CFD Simulation of a Flow Under a Roller-Drum Weir Gate with OpenFOAM. The code is for the Volume-of-Fluid solver "interfoam" of OpenFOAM. The meshes and simulation setups are separated into "with extension" and "without extension", referring to those with and without a jet-guiding structure. For "without extension" there are subfolders to check the filled setup and the filling one. 
+The code provided here is supplementary to the master's thesis of Dimitrov, H. (2026). CFD Simulation of a Flow Under a Roller-Drum Weir Gate with OpenFOAM. The code is for the Volume-of-Fluid solver "interfoam" of OpenFOAM. The meshes and simulation setups are separated into "with extension" and "without extension", referring to those with and without a jet-guiding structure. For "without extension" there are subfolders to check the filled setup and the filling one. The meshes for each load case are provided in the folder "mesh".
 
 The code can be altered and shared freely. 
  
