@@ -1,0 +1,57 @@
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    object      nut;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+// Code template and library provided by Thorenz, C. (2024), DOI: 10.3929/ethz-b-000675949
+
+dimensions      [0 2 -1 0 0 0 0];
+
+internalField   uniform 0;
+
+boundaryField
+{
+    atmosphere
+    {
+        type            calculated;
+        value           uniform 0;
+    }
+    
+    defaultFaces
+    {
+        type            calculated;
+        value           uniform 0;
+    }
+    gate
+    {
+        type            nutkRoughWallFunction;
+        Ks              uniform .00100000000000000000;  // roughness height = sand-grain roughness (0 for smooth walls) [m]
+        Cs              uniform 0.5;    // roughness constant, default 0.5
+        value           uniform 0.0;
+    }
+    
+    inlet
+    {
+        type            calculated;
+        value           uniform 0;
+    }
+    lowerWall
+    {
+        type            nutkRoughWallFunction;
+        Ks              uniform .00100000000000000000;  // roughness height = sand-grain roughness (0 for smooth walls) [m]
+        Cs              uniform 0.5;    // roughness constant, default 0.5
+        value           uniform 0.0;
+    }
+    
+    outlet
+    {
+        type            calculated;
+        value           uniform 0;
+    }
+    
+}
