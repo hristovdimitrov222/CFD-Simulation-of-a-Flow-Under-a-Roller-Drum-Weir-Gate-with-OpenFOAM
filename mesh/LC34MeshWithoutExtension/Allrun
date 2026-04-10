@@ -1,0 +1,12 @@
+#!/bin/bash
+
+blockMesh
+
+surfaceFeatureExtract
+
+decomposePar
+
+mpirun -np 5 snappyHexMesh -overwrite -parallel
+reconstructParMesh -latestTime -constant
+
+rm -r processor*

@@ -1,0 +1,128 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2506                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      surfaceFeatureExtractDict;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * /
+
+
+atmosphere.stl
+{
+
+    extractionMethod extractFromSurface;
+
+    includedAngle 150;
+
+    subsetFeatures
+    {
+
+        nonManifoldEdges false;
+
+        openEdges true;
+    }
+
+    writeObj true;
+}
+
+defaultFaces.stl
+{
+
+    extractionMethod extractFromSurface;
+
+    includedAngle 150;
+
+    subsetFeatures
+    {
+
+        nonManifoldEdges false;
+
+        openEdges true;
+    }
+
+    writeObj true;
+}
+
+gate.stl
+{
+
+    extractionMethod extractFromSurface;
+
+    includedAngle 150;
+
+    subsetFeatures
+    {
+
+        nonManifoldEdges false;
+
+        openEdges true;
+    }
+
+    writeObj true;
+}
+
+inlet.stl
+{
+
+    extractionMethod extractFromSurface;
+
+    includedAngle 150;
+
+    subsetFeatures
+    {
+
+        nonManifoldEdges false;
+
+        openEdges true;
+    }
+
+    writeObj true;
+}
+
+lowerWall.stl
+{
+
+    extractionMethod extractFromSurface;
+
+    includedAngle 150;
+
+    subsetFeatures
+    {
+
+        nonManifoldEdges false;
+
+        openEdges true;
+    }
+
+    writeObj true;
+}
+
+outlet.stl
+{
+
+    extractionMethod extractFromSurface;
+
+    includedAngle 150;
+
+    subsetFeatures
+    {
+
+        nonManifoldEdges false;
+
+        openEdges true;
+    }
+
+    writeObj true;
+}
+
+
+// ************************************************************************* //
