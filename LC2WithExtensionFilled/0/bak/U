@@ -1,0 +1,55 @@
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+FoamFile
+{
+    version     2.0;
+    format      binary;
+    class       volVectorField;
+    object      U;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 1 -1 0 0 0 0];
+
+internalField   uniform (0 0 0);
+
+boundaryField
+{
+    atmosphereH
+    {
+        type            pressureInletOutletVelocity; // Alternativ: fluxCorrectedVelocity,  pressureNormalInletOutletVelocity, ...
+        value           uniform (0 0 0);
+    }
+    atmosphereL
+    {
+        type            pressureInletOutletVelocity; // Alternativ: fluxCorrectedVelocity,  pressureNormalInletOutletVelocity, ...
+        value           uniform (0 0 0);
+    }
+    defaultFaceL
+    {
+        type            slip;
+    }
+    defaultFaceR
+    {
+        type            slip;
+    }
+    gate
+    {
+        type            fixedValue;
+        value           uniform (0 0 0);
+    }
+    inlet
+    {
+        type            pressureInletOutletVelocity; // Alternativ: fluxCorrectedVelocity,  pressureNormalInletOutletVelocity, ...
+        value           uniform (0 0 0);
+    }
+    lowerWall
+    {
+        type            fixedValue;
+        value           uniform (0 0 0);
+    }
+    outlet
+    {
+        type            pressureInletOutletVelocity; // Alternativ: fluxCorrectedVelocity,  pressureNormalInletOutletVelocity, ...
+        value           uniform (0 0 0);
+    }
+}
